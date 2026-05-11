@@ -1182,17 +1182,16 @@ function ScoreboardScreen({ room, isHost, onNextRound }) {
 
   return (
     <div className="space-y-6 p-5 sm:p-7">
-      {accusedPlayer ? (
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          className={`rounded-[32px] border p-5 sm:p-6 ${
-            accusedIsSpy
-              ? 'border-[#6f3a46]/45 bg-[#171217]/80'
-              : 'border-[#3a5c68]/40 bg-[#0f171d]/80'
-          }`}
-        >
-          <p className="eyebrow">Mission result</p>
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        className={`rounded-[32px] border p-5 sm:p-6 ${
+          accusedIsSpy
+            ? 'border-[#6f3a46]/45 bg-[#171217]/80'
+            : 'border-[#3a5c68]/40 bg-[#0f171d]/80'
+        }`}
+      >
+        <p className="eyebrow">Mission result</p>
           
           {/* Upper half: 60/40 split */}
           <div className="mt-4 grid grid-cols-5 gap-4">
@@ -1235,6 +1234,12 @@ function ScoreboardScreen({ room, isHost, onNextRound }) {
             </div>
           </div>
 
+          {room.round.result.reason && (
+            <p className="mt-5 text-sm text-[#f3e1c1]/80 leading-relaxed">
+              {room.round.result.reason}
+            </p>
+          )}
+
           <div className="mt-4 space-y-4">
             <div className="flex items-center gap-5">
               <MapPin className="size-10 sm:size-14 shrink-0 text-[#ba9459]" />
@@ -1256,18 +1261,19 @@ function ScoreboardScreen({ room, isHost, onNextRound }) {
               </div>
             </div>
 
-            <div className="flex items-center gap-5">
-              <User className="size-10 sm:size-14 shrink-0 text-[#74a9b8]" />
-              <div className="flex flex-col justify-center">
-                <p className="text-xs uppercase tracking-[0.22em] text-[#f3e1c1]/55">Accused player</p>
-                <p className="mt-0 font-display text-2xl sm:text-3xl leading-none text-[#f3e1c1]">
-                  {accusedName}
-                </p>
+            {accusedPlayer && (
+              <div className="flex items-center gap-5">
+                <User className="size-10 sm:size-14 shrink-0 text-[#74a9b8]" />
+                <div className="flex flex-col justify-center">
+                  <p className="text-xs uppercase tracking-[0.22em] text-[#f3e1c1]/55">Accused player</p>
+                  <p className="mt-0 font-display text-2xl sm:text-3xl leading-none text-[#f3e1c1]">
+                    {accusedName}
+                  </p>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </motion.div>
-      ) : null}
 
       <motion.section
         initial={{ opacity: 0, y: 10 }}
