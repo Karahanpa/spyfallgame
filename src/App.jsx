@@ -1164,11 +1164,10 @@ function ScoreboardScreen({ room, isHost, onNextRound }) {
   const topVotedPlayers = topVotedEntries
     .map(({ playerId }) => room.players.find((player) => player.id === playerId))
     .filter(Boolean)
-  const topVotedDisplay = topVotedPlayers.length > 0
+  const topVotedDisplayLines = topVotedPlayers.length > 0
     ? topVotedPlayers
       .map((player) => `${player.name} (${room.round.spies.includes(player.id) ? 'Spy' : 'Local'})`)
-      .join(', ')
-    : 'No one'
+    : ['No one']
   const voteOutcomeText =
     highestVoteTotal === 0
       ? 'No votes were cast this round.'
@@ -1288,7 +1287,13 @@ function ScoreboardScreen({ room, isHost, onNextRound }) {
           </div>
           <div className="min-w-0">
             <p className="text-xs uppercase tracking-[0.22em] text-[#f3e1c1]/55">Most voted player</p>
-            <p className="mt-1 truncate font-display text-3xl leading-none text-[#f3e1c1] sm:text-4xl">{topVotedDisplay}</p>
+            <div className="mt-1 space-y-1">
+              {topVotedDisplayLines.map((entry) => (
+                <p key={entry} className="font-display text-3xl leading-none text-[#f3e1c1] sm:text-4xl">
+                  {entry}
+                </p>
+              ))}
+            </div>
             <p className="mt-2 text-sm text-[#f3e1c1]/70">{voteOutcomeText}</p>
           </div>
         </div>
