@@ -1,0 +1,13 @@
+- [x] Verify that the copilot-instructions.md file in the .github directory is created.
+- [x] Clarify Project Requirements: React, Vite, TailwindCSS, Supabase realtime, Framer Motion, mobile-first Spyfall-inspired party game.
+- [x] Scaffold the Project: Created the Vite React app in the current workspace root and pinned Vite to 5.4.19 with @vitejs/plugin-react 4.3.4 for Windows build reliability.
+- [x] Customize the Project: Replaced the starter app with the multiplayer room flow, role distribution, discussion timer, voting, spy guess, scoreboard, themed packs, sound cues, and rejoin support.
+- [x] Install Required Extensions: No extensions required.
+- [x] Compile the Project: Installed dependencies, fixed integration issues, and verified `npm run lint` and `npm run build`.
+- [ ] Create and Run Task: Skipped because package scripts are sufficient for this project.
+- [ ] Launch the Project: Not launched automatically because user confirmation was not requested.
+- [x] Ensure Documentation is Complete: Updated README.md and added Supabase env/schema setup files.
+
+- Work through each checklist item systematically.
+- Keep communication concise and focused.
+- Follow development best practices.

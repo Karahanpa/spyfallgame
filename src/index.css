@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    font-family: 'Barlow Condensed', 'Segoe UI', sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #090b13;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    min-height: 100%;
+    background: #090b13;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top, rgba(255, 146, 84, 0.08), transparent 32%),
+      linear-gradient(180deg, #090b13 0%, #090d16 38%, #05060b 100%);
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: rgba(255, 146, 84, 0.35);
+    color: white;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-[32px] border border-white/10 bg-white/[0.06] shadow-panel backdrop-blur-xl;
+  }
+
+  .eyebrow {
+    @apply text-[0.7rem] uppercase tracking-[0.24em] text-[#f3e1c1]/55;
+  }
+
+  .title-lg {
+    @apply font-display text-3xl leading-[0.95] tracking-[-0.03em] text-[#f3e1c1] sm:text-5xl;
+  }
+
+  .title-sm {
+    @apply font-display text-2xl leading-[0.95] tracking-[-0.02em] text-[#f3e1c1];
+  }
+
+  .input {
+    @apply w-full rounded-[22px] border border-white/10 bg-black/20 px-4 py-3 text-[#f3e1c1] outline-none transition placeholder:text-[#f3e1c1] placeholder:opacity-30 focus:border-sunset/40 focus:bg-black/25;
+  }
+
+  .primary-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-[24px] border border-sunset/30 bg-sunset px-5 py-4 font-semibold tracking-[0.04em] text-slate-950 transition duration-150 hover:brightness-110 active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .secondary-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-[24px] border border-white/10 bg-white/10 px-5 py-4 font-medium tracking-[0.03em] text-[#f3e1c1] transition duration-150 hover:bg-white/10 active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .ghost-button {
+    @apply inline-flex items-center justify-center gap-2 rounded-[24px] border border-white/10 bg-transparent px-5 py-4 font-medium tracking-[0.03em] text-[#f3e1c1]/75 transition duration-150 hover:border-white/20 hover:bg-white/5 active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full border border-white/10 bg-black/15 px-3 py-1.5 text-sm tracking-[0.03em] text-[#f3e1c1]/75;
+  }
+
+  .pill {
+    @apply rounded-[20px] border border-white/10 bg-black/15 px-4 py-3 text-sm font-medium tracking-[0.03em] text-[#f3e1c1]/75 transition duration-150 hover:border-white/20 hover:bg-white/10 active:translate-y-[1px];
+  }
+
+  .pill-active {
+    @apply rounded-[20px] border border-aqua/30 bg-aqua/15 px-4 py-3 text-sm font-semibold tracking-[0.03em] text-[#f3e1c1] transition duration-150 active:translate-y-[1px];
+  }
+
+  .pack {
+    @apply flex items-center justify-between gap-4 rounded-[22px] border border-white/10 bg-black/15 px-4 py-3 text-left tracking-[0.03em] text-[#f3e1c1]/75 transition hover:border-white/20 hover:bg-white/5;
+  }
+
+  .pack-active {
+    @apply flex items-center justify-between gap-4 rounded-[22px] border border-sunset/30 bg-sunset/15 px-4 py-3 text-left tracking-[0.03em] text-[#f3e1c1];
+  }
+
+  .vote-card {
+    @apply flex items-center justify-between gap-4 rounded-[24px] border border-white/10 bg-black/15 px-4 py-4 text-left tracking-[0.03em] text-[#f3e1c1]/75 transition duration-150 hover:border-white/20 hover:bg-white/5 active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .vote-card-active {
+    @apply flex items-center justify-between gap-4 rounded-[24px] border border-warning/30 bg-warning/10 px-4 py-4 text-left tracking-[0.03em] text-[#f3e1c1] transition duration-150 active:translate-y-[1px];
+  }
+}
