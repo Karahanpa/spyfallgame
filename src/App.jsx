@@ -210,6 +210,11 @@ function App() {
   async function handleCreateRoom() {
     const cleanName = getMenuPlayerName(playerName)
 
+    if (!cleanName) {
+      setStatusMessage('Enter your name to create a room.')
+      return
+    }
+
     const hostPlayer = createPlayer(cleanName)
     const nextRoom = createInitialRoom(hostPlayer)
 
@@ -236,6 +241,11 @@ function App() {
     const code = joinCode.trim().toUpperCase()
     const savedSession = getRoomSession()
     const reconnectPlayerId = savedSession?.roomCode === code ? savedSession.playerId : ''
+
+    if (!cleanName) {
+      setStatusMessage('Enter your name before joining a room.')
+      return
+    }
 
     if (code.length < 4) {
       setStatusMessage('Enter a valid room code.')
@@ -545,6 +555,8 @@ function App() {
           </div>
         ) : (
           <WelcomeScreen
+            playerName={playerName}
+            setPlayerName={setPlayerName}
             joinCode={joinCode}
             setJoinCode={setJoinCode}
             onCreateRoom={handleCreateRoom}
@@ -563,6 +575,8 @@ function App() {
 }
 
 function WelcomeScreen({
+  playerName,
+  setPlayerName,
   joinCode,
   setJoinCode,
   onCreateRoom,
@@ -666,6 +680,17 @@ function WelcomeScreen({
               {statusMessage}
             </div>
           ) : null}
+
+          <div className="mb-4">
+            <p className="mb-2 text-xs uppercase tracking-[0.24em] text-[#f3e1c1]/50">Your name</p>
+            <input
+              value={playerName}
+              onChange={(event) => setPlayerName(event.target.value)}
+              placeholder="Enter your name"
+              className="input"
+              maxLength={24}
+            />
+          </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
             <button type="button" className="primary-button" onClick={onCreateRoom} disabled={isBusy}>
@@ -1474,7 +1499,7 @@ function getMenuPlayerName(value = '') {
     return fromStorage
   }
 
-  return `Agent ${Math.floor(100 + Math.random() * 900)}`
+  return ''
 }
 
 export default App
