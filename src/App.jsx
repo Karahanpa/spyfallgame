@@ -589,7 +589,7 @@ function WelcomeScreen({
   onClearStatus,
 }) {
   const [logoHidden, setLogoHidden] = useState(false)
-  const [view, setView] = useState('play')
+  const [view, setView] = useState('main')
   const [howToOpen, setHowToOpen] = useState(false)
   const [statsOpen, setStatsOpen] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false)
